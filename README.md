@@ -283,7 +283,7 @@ Handle SomeMessage
 The fixture is executed using TestBench's `fixture` method.
 
 ``` ruby
-fixture(Messaging::Fixtures::Handler, handler, input_message, entity=nil, entity_version=nil, clock_time: nil, identifier_uuid: nil, &test_block)
+fixture(Messaging::Fixtures::Handler, handler, input_message, entity=nil, entity_version=nil, entity_id: nil, clock_time: nil, identifier_uuid: nil, &test_block)
 ```
 
 The first argument sent to the `fixture` method is always the `Messaging::Fixtures::Handler` class. Subsequent arguments are the specific construction parameters of the handler fixture.
@@ -296,6 +296,7 @@ The first argument sent to the `fixture` method is always the `Messaging::Fixtur
 | input_message | Input message that will be sent to the handler in order to be processed | Messaging::Message |
 | entity | Optional entity object that the handler will retrieve from its entity store | (any) |
 | entity_version | Optional entity version that can be retrieved along with the entity from the handler's entity store | Integer |
+| entity_id | Optional identifier under which the entity is stored in the handler's entity store. If `entity_id` is not specified, the result of calling `id` on `entity` will be used. | String |
 | clock_time | Optional time object used to fix the handler's clock to a specific time | Time |
 | identifier_uuid | Optional UUID string object used to fix the handler's identifier generator to a specific UUID | String |
 | test_block | Block used for invoking other assertions that are part of the handler fixture's API | Proc |
